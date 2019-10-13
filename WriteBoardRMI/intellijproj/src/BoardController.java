@@ -103,7 +103,7 @@ public class BoardController {
                 }
             });
             thisStage.setScene(scene);
-            thisStage.setTitle("Board");
+            thisStage.setTitle("BubbleGum-Board");
 
         } catch (Exception e) {
             e.printStackTrace();
