@@ -18,8 +18,10 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        inputBoard input_board = new inputBoard();
-        input_board.inputBoardWindow();
+//        inputBoard input_board = new inputBoard();
+//        input_board.inputBoardWindow();
+        drawBoard draw = new drawBoard();
+        draw.drawBoardWindow();
 
     }
 }

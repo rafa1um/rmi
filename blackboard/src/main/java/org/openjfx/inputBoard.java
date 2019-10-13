@@ -1,6 +1,5 @@
 package org.openjfx;
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -47,10 +46,14 @@ public class inputBoard {
         GridPane.setConstraints(board_i, 1, 2);
 
         //Botao Enviar
-        Button sendButton = new Button("Enviar");
+        Button sendButton = new Button("Conectar");
         GridPane.setConstraints(sendButton, 1, 3);
 
-        EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
+        //Botao Listar
+        Button listButton = new Button("Listar Quadros");
+        GridPane.setConstraints(listButton, 1, 4);
+
+        EventHandler<ActionEvent> sendEvent = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
                 System.out.println(hostname_i.getText());
                 System.out.println(port_i.getText());
@@ -58,10 +61,17 @@ public class inputBoard {
             }
         };
 
-        sendButton.setOnAction(event);
+        EventHandler<ActionEvent> listEvent = new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e) {
+
+            }
+        };
+
+        sendButton.setOnAction(sendEvent);
+        listButton.setOnAction(listEvent);
 
 
-        grid.getChildren().addAll(hostname_l, hostname_i, port_l, port_i, board_l, board_i, sendButton);
+        grid.getChildren().addAll(hostname_l, hostname_i, port_l, port_i, board_l, board_i, sendButton, listButton);
 
         Scene scene = new Scene(grid, 300, 200);
         window.setScene(scene);
