@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="218.0" prefWidth="282.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <TextField layoutX="95.0" style="-fx-text-inner-color: red; -fx-background-color: yellow" layoutY="23.0" fx:id="userName"/>
+        <TextField layoutX="95.0" style="-fx-text-inner-color: blue; -fx-background-color: springgreen" layoutY="65.0" fx:id="ipAddr"/>
+        <TextField layoutX="95.0" style="-fx-text-inner-color: crimson; -fx-background-color: dodgerblue" layoutY="107.0"  fx:id="port"/>
+        <Button fx:id="loginButton" layoutX="95.0" layoutY="150.0" mnemonicParsing="false" text="Conectar" />
+        <Text layoutX="11.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" fill="deeppink" text="ID" wrappingWidth="70.7294921875"/>
+        <Text layoutX="11.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" fill="aqua" text="Hostname" wrappingWidth="70.7294921875" />
+        <Text layoutX="11.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" fill="mediumspringgreen" text="Porta" wrappingWidth="70.7294921875" />
+    </children>
+</AnchorPane>
