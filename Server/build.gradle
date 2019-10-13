@@ -1,0 +1,17 @@
+plugins {
+    id 'application'
+}
+
+group 'vcarloto_rafa1um'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+application{
+    mainClassName = 'blackboard_server.Server'
+    applicationDefaultJvmArgs = ['-Djava.rmi.server.codebase=file:blackboard_server/']
+}
