@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="218.0" prefWidth="282.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField layoutX="86.0" layoutY="23.0" fx:id="userName"/>
+      <TextField layoutX="86.0" layoutY="75.0" fx:id="ipAddr"/>
+      <TextField layoutX="86.0" layoutY="128.0"  fx:id="port"/>
+      <Button fx:id="loginButton" layoutX="112.0" layoutY="179.0" mnemonicParsing="false" text="Entrar" />
+      <Text layoutX="21.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome" wrappingWidth="43.7294921875"/>
+      <Text layoutX="21.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IP" wrappingWidth="43.7294921875" />
+      <Text layoutX="21.0" layoutY="144.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Porta" wrappingWidth="43.7294921875" />
+   </children>
+</AnchorPane>
