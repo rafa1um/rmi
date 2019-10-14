@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/WriteBoardRMI.iml" filepath="$PROJECT_DIR$/.idea/WriteBoardRMI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/BubbleGumBoardRMI.iml" filepath="$PROJECT_DIR$/.idea/BubbleGumBoardRMI.iml" />
     </modules>
   </component>
 </project>
