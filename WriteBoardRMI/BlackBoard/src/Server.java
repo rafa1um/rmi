@@ -4,23 +4,19 @@ import java.rmi.Naming;
 Classname: HelloServerDemo
 Purpose: The RMI server.
 */
-public class Server{
+public class Server {
 
-    Server()
-    {
-        try{
-            WriteBoard c = new WriteBoardImple();
+    Server() {
+        try {
+            BlackBoardInterface c = new BlackBoard();
             Naming.rebind("rmi://127.0.0.1:3030/WriteBoardService", c);
             System.out.println("Conectado!");
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         new Server();
     }
 }

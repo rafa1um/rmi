@@ -1,6 +1,6 @@
 JC = javac
 
-PATH_TO_FX=/home/rafa1um/Downloads/javafx-sdk-11.0.2/lib/
+PATH_TO_FX=/home/vcarloto/Documents/practice/openjfx-11.0.2_linux-x64_bin-sdk/javafx-sdk-11.0.2/lib
 JFLAGS = --module-path $(PATH_TO_FX) --add-modules javafx.controls,javafx.fxml
 .SUFFIXES: .java .class
 
@@ -15,8 +15,8 @@ CLASSES = \
 		User.java \
 		BoardController.java \
 		BoardSelectionController.java \
-		WriteBoardImple.java \
-		WriteBoard.java
+		BlackBoard.java \
+		BlackBoardInterface.java
 
 default: classes
 

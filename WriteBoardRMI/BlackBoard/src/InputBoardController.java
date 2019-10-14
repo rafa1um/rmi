@@ -4,21 +4,21 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.rmi.Naming;
-import javafx.scene.paint.Color;
 
 public class InputBoardController {
     @FXML
-        private Stage thisStage;
+    private Stage thisStage;
     @FXML
-        public Button loginButton;
+    public Button loginButton;
     @FXML
-        private TextField userName;
+    private TextField userName;
     @FXML
-        private TextField ipAddr;
+    private TextField ipAddr;
     @FXML
-        private TextField port;
+    private TextField port;
 
     private String userColor;
 
@@ -52,14 +52,11 @@ public class InputBoardController {
         // CREATE NEW USER ON SERVER
 
         userColor = "Yellow";
-        try
-        {
-            WriteBoard c = (WriteBoard) Naming.lookup("rmi://127.0.0.1:3030/WriteBoardService");
+        try {
+            BlackBoardInterface c = (BlackBoardInterface) Naming.lookup("rmi://127.0.0.1:3030/WriteBoardService");
             c.newUser(getUserName(), userColor);
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println(e);
         }
         BoardSelectionController boardSelectionController = new BoardSelectionController(this);
@@ -67,17 +64,19 @@ public class InputBoardController {
 
     }
 
-    public String getUserColor() {return userColor;}
+    public String getUserColor() {
+        return userColor;
+    }
 
-    public String getUserName(){
+    public String getUserName() {
         return userName.getText();
     }
 
-    public String getIpAddr(){
+    public String getIpAddr() {
         return ipAddr.getText();
     }
 
-    public String getPort(){
+    public String getPort() {
         return port.getText();
     }
 

@@ -15,8 +15,8 @@ CLASSES = \
 		User.java \
 		BoardController.java \
 		BoardSelectionController.java \
-		WriteBoardImple.java \
-		WriteBoard.java
+		BlackBoard.java \
+		BlackBoardInterface.java
 
 default: classes
 

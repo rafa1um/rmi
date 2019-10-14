@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.stage.Stage;
+
 import java.rmi.Naming;
 
 public class Client extends Application {
@@ -13,12 +14,9 @@ public class Client extends Application {
 
     public static void main(String[] args) {
         launch(args);
-        try
-        {
-            WriteBoard c = (WriteBoard) Naming.lookup("rmi://127.0.0.1:3030/WriteBoardService");
-        }
-        catch (Exception e)
-        {
+        try {
+            BlackBoardInterface c = (BlackBoardInterface) Naming.lookup("rmi://127.0.0.1:3030/WriteBoardService");
+        } catch (Exception e) {
             System.out.println(e);
         }
     }

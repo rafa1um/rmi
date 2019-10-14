@@ -3,7 +3,7 @@ public class User {
     private String user_name;
     private String user_color;
 
-    public User(String name, String color){
+    public User(String name, String color) {
         user_name = name;
         user_color = color;
     }

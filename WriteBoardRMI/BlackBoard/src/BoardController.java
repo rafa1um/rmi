@@ -6,11 +6,11 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import javafx.scene.shape.Line;
+import javafx.stage.Stage;
+
 import java.rmi.Naming;
 import java.rmi.RemoteException;
-import java.util.List;
 
 public class BoardController {
     @FXML
@@ -24,7 +24,8 @@ public class BoardController {
     private int user_size = 0;  // Numero de linhas que tem no quadro
     private Boolean break_thread = false;  //Para parar a thread;
     private int board_position;  //Pega a posição do quadro no servido
-    @FXML private AnchorPane apMain;
+    @FXML
+    private AnchorPane apMain;
 
     public void initialize() {
         voltarButton.setOnAction(actionEvent -> voltarButtonAction());
@@ -34,7 +35,7 @@ public class BoardController {
         thisStage.showAndWait();
     }
 
-    public Line drawLine(double x, double y){
+    public Line drawLine(double x, double y) {
         String color = boardSelectionController.getUserColor();
         Line line = new Line();
         line.setStartX(x);
@@ -56,15 +57,14 @@ public class BoardController {
         System.out.println(boardName);
 
 
-
         try {
-            WriteBoard bs = (WriteBoard) Naming.lookup("rmi://127.0.0.1:3030/WriteBoardService");
+            BlackBoardInterface bs = (BlackBoardInterface) Naming.lookup("rmi://127.0.0.1:3030/WriteBoardService");
             board_position = bs.getBoardPosition(boardName);
             new Thread(() -> {
-                while(!break_thread) {
+                while (!break_thread) {
                     try {
                         if (bs.checkUpdate(board_position, user_size)) {
-                             // List<Line> l =  bs.getPoints(board_position);
+                            // List<Line> l =  bs.getPoints(board_position);
                             //System.out.println(l.size());
                             System.out.println("Percorrer lista e desenhar size " + user_size);
                         }
@@ -81,7 +81,7 @@ public class BoardController {
             scene.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
-                    if(already_clicked){
+                    if (already_clicked) {
                         Line l = drawLine(mouseEvent.getX(), mouseEvent.getY());  // essa funçao nao deve ser chamada
                         try {
                             bs.drawLine(boardName,
@@ -94,8 +94,7 @@ public class BoardController {
                             e.printStackTrace();
                         }
                         already_clicked = false;
-                    }
-                    else{
+                    } else {
                         px = mouseEvent.getX();
                         py = mouseEvent.getY();
                         already_clicked = true;
@@ -115,9 +114,9 @@ public class BoardController {
     @FXML
     private void voltarButtonAction() {
         try {
-            WriteBoard bs = (WriteBoard) Naming.lookup("rmi://127.0.0.1:3030/WriteBoardService");
+            BlackBoardInterface bs = (BlackBoardInterface) Naming.lookup("rmi://127.0.0.1:3030/WriteBoardService");
             bs.leaveBoard(boardName, boardSelectionController.getUserName());
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
         break_thread = true;

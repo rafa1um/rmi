@@ -1,15 +1,16 @@
 import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.rmi.Naming;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.concurrent.Task;
 
 public class BoardSelectionController {
 
@@ -62,11 +63,17 @@ public class BoardSelectionController {
         thisStage.showAndWait();
     }
 
-    public String getUserColor(){ return userColor;}
+    public String getUserColor() {
+        return userColor;
+    }
 
-    public String getUserName(){ return userName;}
+    public String getUserName() {
+        return userName;
+    }
 
-    public String getSelectedBoard(){return selectedBoard;}
+    public String getSelectedBoard() {
+        return selectedBoard;
+    }
 
     public void initialize() {
         voltarButton.setOnAction(actionEvent -> voltarButtonAction());
@@ -85,14 +92,11 @@ public class BoardSelectionController {
 
     @FXML
     private void newBoardButtonAction() {
-        try
-        {
-            WriteBoard bs = (WriteBoard) Naming.lookup("rmi://127.0.0.1:3030/WriteBoardService");
+        try {
+            BlackBoardInterface bs = (BlackBoardInterface) Naming.lookup("rmi://127.0.0.1:3030/WriteBoardService");
             bs.newBoard();
             refreshBoardList();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println(e);
         }
     }
@@ -100,14 +104,11 @@ public class BoardSelectionController {
     @FXML
     private void entrarButtonAction() {
         // OPEN BOARD
-        try
-        {
+        try {
             selectedBoard = boardList.getSelectionModel().getSelectedItem();
-            WriteBoard bs = (WriteBoard) Naming.lookup("rmi://127.0.0.1:3030/WriteBoardService");
+            BlackBoardInterface bs = (BlackBoardInterface) Naming.lookup("rmi://127.0.0.1:3030/WriteBoardService");
             bs.enterBoard(selectedBoard, userName);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println(e);
         }
         BoardController boardController = new BoardController(this);
@@ -126,8 +127,7 @@ public class BoardSelectionController {
                 }
                 Platform.runLater(new Runnable() {
                     @Override
-                    public void run()
-                    {
+                    public void run() {
                         refreshBoardList();
                     }
                 });
@@ -136,15 +136,15 @@ public class BoardSelectionController {
     };
 
     private void refreshBoardList() {
-            try {
-                WriteBoard bs = (WriteBoard) Naming.lookup("rmi://127.0.0.1:3030/WriteBoardService");
-                avBoards = bs.getAvailableBoards();
-                if (boardList.getItems().size() != avBoards.size()) {
-                    boardList.getItems().clear();
-                    boardList.getItems().addAll(avBoards);
-                }
-            } catch (Exception e) {
-                System.out.println(e);
+        try {
+            BlackBoardInterface bs = (BlackBoardInterface) Naming.lookup("rmi://127.0.0.1:3030/WriteBoardService");
+            avBoards = bs.getAvailableBoards();
+            if (boardList.getItems().size() != avBoards.size()) {
+                boardList.getItems().clear();
+                boardList.getItems().addAll(avBoards);
             }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 }
