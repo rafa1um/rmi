@@ -47,7 +47,7 @@ public class BoardSelectionController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("boardSelection.fxml"));
             loader.setController(this);
             thisStage.setScene(new Scene(loader.load()));
-            thisStage.setTitle("Board Selection");
+            thisStage.setTitle("BubbleGum-Board");
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -26,14 +26,14 @@ public class WriteBoardImple extends UnicastRemoteObject implements WriteBoard
     public String newUser(String name, String color) throws RemoteException
     {
         User user = new User(name, color);
-        System.out.println("User " + name + " logged in!");
-        return "User " + name + " created!";
+        System.out.println("Usuario " + name + " logado!");
+        return "Usuario " + name + " criado!";
     }
 
     public void newBoard() {
-        Board board = new Board("Quadro " + Integer.toString(board_count));
+        Board board = new Board("BG-Board " + Integer.toString(board_count));
         boards.add(board);
-        System.out.println("Board " + Integer.toString(board_count) + " criado!");
+        System.out.println("BG-Board " + Integer.toString(board_count) + " criado!");
         board_count++;
 
     }
@@ -115,7 +115,7 @@ public class WriteBoardImple extends UnicastRemoteObject implements WriteBoard
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(arq));
             for (int i = 0; i < boards.size(); i++) {
-                writer.write("Quadro: " + boards.get(i).getBoard_name());
+                writer.write("BG-Board: " + boards.get(i).getBoard_name());
                 writer.newLine();
                 for (int j = 0; j < boards.get(i).getBoard_users().size(); j++) {
                     writer.write(boards.get(i).getBoard_users().get(j).getUser_name());
